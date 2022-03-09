@@ -17,3 +17,4 @@ RUN apk add --no-cache --virtual=.build-deps \
       xz \
     && sh /build/install_nim.sh \
     && apk del .build-deps
+RUN echo hello-world
