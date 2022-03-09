@@ -1,0 +1,29 @@
+name: CI
+on:
+  push:
+    paths-ignore:
+      - '**.md'
+  pull_request:
+    paths-ignore:
+      - '**.md'
+
+env:
+  NIM_VERSION: 1.6.0
+
+
+jobs:
+  run-nim-compiler-in-docker-contain:
+    name: Build image and run nim compiler inside
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@ec3a7ce113134d7a93b817d10a8272cb61118579 # 2.4.0
+
+    - name: Build Image
+      run: docker build -t "exercism/nim-docker-base:${NIM_VERSION}" .
+
+    - name: Create container with test entrypoint
+      run: docker create --rm --entrypoint /nim/bin/nim --name ndb "exercism/nim-docker-base:${NIM_VERSION}" r --eval:'import os; echo getFileInfo("/nim/bin/nim")'
+
+    - name: Run container
+      run: docker start -a ndb
