@@ -8,7 +8,7 @@ on:
       - '**.md'
 
 env:
-  NIM_VERSION: 2.0.2
+  NIM_VERSION: 2.0.4
 
 
 jobs:
