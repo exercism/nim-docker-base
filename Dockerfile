@@ -1,5 +1,5 @@
 ARG REPO=alpine
-ARG IMAGE=3.22.0@sha256:08001109a7d679fe33b04fa51d681bd40b975d8f5cea8c3ef6c0eccb6a7338ce
+ARG IMAGE=3.22.1@sha256:eafc1edb577d2e9b458664a15f23ea1c370214193226069eb22921169fc7e43f
 FROM ${REPO}:${IMAGE} AS base
 # We can't reliably pin the package versions on Alpine, so we ignore the linter warning.
 # See https://gitlab.alpinelinux.org/alpine/abuild/-/issues/9996
