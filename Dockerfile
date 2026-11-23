@@ -8,7 +8,7 @@ RUN apk add --no-cache \
       musl-dev
 
 FROM base AS nim_builder
-COPY bin/install_nim.sh /build/
+COPY bin/install_nim.sh bin/pgo_training.nim /build/
 # hadolint ignore=DL3018
 RUN apk add --no-cache --virtual=.build-deps \
       curl \
